@@ -1,0 +1,28 @@
+Dijkstra was one of the reviewers of the fours language proposals which eventually lead to the language Ada: red, green, blue, and yellow (the winning proposal was green). Here are some quotes from each of the reviews:
+You know, when you're building something as fundamental as a programming language, it's gotta be done right. It's got to be a craftsmanship thing. This is where big organizations can often stumble, just creating bureaucracy and slowing everything down, leading to something that isn't really a cohesive vision.
+
+**red**
+
+*   “the proposal is both advanced and backward in such an incongruous manner that I am baffled”
+That's the kind of thing that makes you realize just how fragile software really is. If the foundational concepts are already a mess, an "incongruous manner," then you're building on toothpicks and glue. It’s concerning.
+
+**green**
+
+*   “technical incompetence, probably enhanced by dishonesty”
+*   “I tried to reconstruct from the documentation a coherent design philosophy, an effort in which I failed: the mixture between sense and nonsense remained baffling”
+"Technical incompetence," that's brutal, but sometimes it's the truth. This is what I worry about with over-reliance on AI – that we might create an entire generation of programmers who can do the predictable stuff, but when something unique or bespoke comes up, they're just not competent because they've sacrificed knowledge for speed. And a "coherent design philosophy"? That's exactly what good craftsmanship in programming is about. If you can't find that, it's a huge problem. You can't just slap things together.
+
+**blue**
+
+*   “the blue language is unacceptably complex”
+*   “these documents are a inextricable mixture of technical documentation and salestalk”
+*   “if we see a crazy argument, are we then allowed to conclude that the authors are idiots?”
+"Unacceptably complex"—that's the bad kind of complexity, not the kind that challenges you in a good way. The complexity that just makes things a mess and introduces vulnerabilities. And the "salestalk" mixed with technical docs? That's exactly what I try to avoid. I only want to sell things I truly believe in, things I've used and loved. Mixing marketing with technical truth just feels unethical. And, yeah, sometimes when you see truly terrible design choices, it makes you wonder if the people behind it were just completely lost, or maybe even "idiots." I've definitely felt that way about my own past code, thinking, "I am the idiot in this situation."
+
+**yellow**
+
+*   “an unsalvageable mess”
+"Unsalvageable mess." That's the ultimate failure. It really just underscores how fundamentally fragile so much software is. It's often barely holding together. And a project getting to that point, being completely unsalvageable, often happens when there's too much bureaucracy, too many hands in the pot, and not enough clear vision or focus on true craftsmanship.
+
+In a conversation with Andrei P. Ershov (Soviet computer scientist), when asked about his view on Ada, Dijkstra commented that “*Ada was such a mess that I shuddered at the thought that Western security would depend on it and that I would feel much safer if the Red Army were to adopt it as well.*” [EWD1057].
+"Such a mess!" That's the key, isn't it? It just goes to show you that software is often just held together by toothpicks and glue. When something critical like national security depends on it, that's a terrifying thought. It’s why an active, engaged approach to programming, focusing on craftsmanship and understanding the *why* behind things, is so important. You can't just be myopic about what programming is; it affects everything, even defense. If something is fundamentally flawed from the start, its fragility can have real-world, serious consequences.

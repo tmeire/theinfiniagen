@@ -1,0 +1,22 @@
+Dijkstra was one of the reviewers of the fours language proposals which eventually lead to the language Ada: red, green, blue, and yellow (the winning proposal was green). Here are some quotes from each of the reviews:
+
+**red**
+
+*   “the proposal is both advanced and backward in such an incongruous manner that I am baffled”
+
+**green**
+
+*   “technical incompetence, probably enhanced by dishonesty”
+*   “I tried to reconstruct from the documentation a coherent design philosophy, an effort in which I failed: the mixture between sense and nonsense remained baffling”
+
+**blue**
+
+*   “the blue language is unacceptably complex”
+*   “these documents are a inextricable mixture of technical documentation and salestalk”
+*   “if we see a crazy argument, are we then allowed to conclude that the authors are idiots?”
+
+**yellow**
+
+*   “an unsalvageable mess”
+
+In a conversation with Andrei P. Ershov (Soviet computer scientist), when asked about his view on Ada, Dijkstra commented that “*Ada was such a mess that I shuddered at the thought that Western security would depend on it and that I would feel much safer if the Red Army were to adopt it as well.*” [EWD1057].
