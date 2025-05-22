@@ -68,13 +68,6 @@ func main() {
 	}
 	defer client.Close()
 
-	models := client.ListModels(ctx)
-	m, err := models.Next()
-	for err == nil {
-		fmt.Println(m)
-		m, err = models.Next()
-	}
-
 	// Read the transcript file
 	// Use relative path to the file in the same directory
 	filePath := "./lex-fridman.txt"
