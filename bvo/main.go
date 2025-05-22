@@ -6,8 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/google/generative-ai-go/genai"
-	"google.golang.org/api/option"
+	"google.golang.org/genai"
 )
 
 // readTextFile reads the content of a text file and returns it as a string
@@ -21,7 +20,6 @@ func readTextFile(filePath string) (string, error) {
 
 // extractBVO uses Google Gemini API to extract beliefs, values, and opinions from text
 func extractBVO(ctx context.Context, client *genai.Client, text string) (string, error) {
-	model := client.GenerativeModel("models/gemini-2.5-flash-preview-05-20")
 
 	prompt := fmt.Sprintf(`
 	Please analyze the following interview transcript and extract the beliefs, values, and opinions expressed by the speakers.
@@ -36,7 +34,7 @@ func extractBVO(ctx context.Context, client *genai.Client, text string) (string,
 	%s
 	`, text)
 
-	resp, err := model.GenerateContent(ctx, genai.Text(prompt))
+	resp, err := client.Models.GenerateContent(ctx, "models/gemini-2.5-flash-preview-05-20", genai.Text(prompt), nil)
 	if err != nil {
 		return "", fmt.Errorf("failed to generate content: %v", err)
 	}
@@ -44,9 +42,7 @@ func extractBVO(ctx context.Context, client *genai.Client, text string) (string,
 	var result string
 	for _, candidate := range resp.Candidates {
 		for _, part := range candidate.Content.Parts {
-			if str, ok := part.(genai.Text); ok {
-				result += string(str)
-			}
+			result += part.Text
 		}
 	}
 
@@ -62,11 +58,14 @@ func main() {
 
 	// Initialize Gemini API client
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, option.WithAPIKey(apiKey))
+
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		APIKey:  apiKey,
+		Backend: genai.BackendGeminiAPI,
+	})
 	if err != nil {
 		log.Fatalf("Failed to create client: %v", err)
 	}
-	defer client.Close()
 
 	// Read the transcript file
 	// Use relative path to the file in the same directory

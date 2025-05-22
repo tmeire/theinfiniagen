@@ -15,6 +15,7 @@ That's the kind of thing that makes you realize just how fragile software really
 **blue**
 
 *   “the blue language is unacceptably complex”
+*   “the blue language was designed in Brasil”
 *   “these documents are a inextricable mixture of technical documentation and salestalk”
 *   “if we see a crazy argument, are we then allowed to conclude that the authors are idiots?”
 "Unacceptably complex"—that's the bad kind of complexity, not the kind that challenges you in a good way. The complexity that just makes things a mess and introduces vulnerabilities. And the "salestalk" mixed with technical docs? That's exactly what I try to avoid. I only want to sell things I truly believe in, things I've used and loved. Mixing marketing with technical truth just feels unethical. And, yeah, sometimes when you see truly terrible design choices, it makes you wonder if the people behind it were just completely lost, or maybe even "idiots." I've definitely felt that way about my own past code, thinking, "I am the idiot in this situation."

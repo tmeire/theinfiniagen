@@ -13,7 +13,6 @@ import (
 	"regexp"
 	"strings"
 
-	//"google.golang.org/api/option"
 	"google.golang.org/genai"
 )
 
@@ -204,7 +203,9 @@ Make it clear where the original article ends and your additions begin.`, string
 	return result.String(), nil
 }
 
+// mouth takes the provided article and passes it to the TTS engine.
 func mouth(ctx context.Context, client *genai.Client, article string) ([]byte, error) {
+	fmt.Println("Trying to make some sounds. I can speak very well...")
 	config := &genai.GenerateContentConfig{}
 	config.ResponseModalities = []string{"AUDIO"}
 	config.SpeechConfig = &genai.SpeechConfig{
@@ -217,7 +218,11 @@ func mouth(ctx context.Context, client *genai.Client, article string) ([]byte, e
 	}
 
 	// Create prompt for text-to-speech conversion with male voice and MP3 format
-	prompt := fmt.Sprintf(`Say the following text in an upbeat tone. 
+	prompt := fmt.Sprintf(`Say the text after *** in an upbeat tone. When you encounter bullets in the text, 
+don't pronounce them, just read through them. It's ok to add the occasional pauses, hesitations and stumbles while talking.
+When you encouter a mention of something related to Brasil, excitedly say "Brasil mentioned?! Brasil mentioned! ya ya ya".
+
+***
 	%s`, article)
 
 	// Generate content
@@ -227,17 +232,13 @@ func mouth(ctx context.Context, client *genai.Client, article string) ([]byte, e
 	}
 
 	// Extract the audio data
-	var result []byte
 	for _, candidate := range resp.Candidates {
 		for _, part := range candidate.Content.Parts {
 			blob := part.InlineData
 			if blob != nil {
-				result = append(result, blob.Data...)
+				return blob.Data, nil
 			}
 		}
-	}
-	if len(result) > 0 {
-		return result, nil
 	}
 
 	return nil, fmt.Errorf("no audio data found in the response")
@@ -247,6 +248,9 @@ const sampleRate = 24000
 const numChannels = 1
 const bitDepth = 16
 
+// toWav adds the WAV headers to the byte slice to make sure the resulting file is recognised by the players.
+//
+// WHY DIDN'T THEY JUST ADD THE HEADERS IN THE RESPONSE?!/1??!/?!?!
 func toWav(audioData []byte) []byte {
 	var b bytes.Buffer
 
