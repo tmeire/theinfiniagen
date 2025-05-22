@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/google/generative-ai-go/genai"
@@ -79,6 +80,9 @@ func cache(cacheType, filename, content string) {
 	}
 }
 
+var imageRegex = regexp.MustCompile(`\!\[[^\]]*\]\([^\)]*\)(\n_([^_]*)_)?`)
+var linkRegex = regexp.MustCompile(`\[([^\]]*)\]\([^\)]*\)`)
+
 // eyes downloads the content from the provided URL and uses Gemini API to extract a text-only version
 func eyes(ctx context.Context, client *genai.Client, articleURL string) (string, error) {
 	fmt.Println("Navigating the web...")
@@ -129,7 +133,13 @@ HTML content:
 		}
 	}
 
-	return result.String(), nil
+	// remove all images
+	text := imageRegex.ReplaceAllString(result.String(), "")
+
+	// replave all links with just the link text
+	text = linkRegex.ReplaceAllString(text, "$1")
+
+	return text, nil
 }
 
 // brain downloads an article from the provided URL, sends it to the Gemini API
